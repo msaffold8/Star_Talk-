@@ -11,10 +11,11 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "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",
+  // apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
