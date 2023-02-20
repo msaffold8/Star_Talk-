@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { chatbot } from "./Api.js";
+import ChatMessage from "./ChatMessage.js";
+import { motion } from "framer-motion";
 
 function Chatbot(props) {
   const [conversation, setConversation] = useState([]);
@@ -33,21 +35,29 @@ function Chatbot(props) {
   };
   const renderConversation = () => {
     return conversation.map((message, i) => (
-      <div key={i}>
-        <p>
-          {message.speaker}: {message.text}
-        </p>
-      </div>
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ delay: i * 0.1 }}
+      >
+        <ChatMessage message={message} />
+      </motion.div>
     ));
   };
 
   return (
-    <div>
-      <h1>Chatbot</h1>
-      <div className="conversation-container">{renderConversation()}</div>
+    <div className="flex flex-col h-screen justify-between">
+      <div className="p-4">
+        <h1 className="text-3xl font-bold text-center">{name}</h1>
+        <div className="conversation-container">{renderConversation()}</div>
+      </div>
       <form onSubmit={onFormSubmit}>
         <input type="text" value={input} onChange={onInputChange} />
-        <button type="submit">Send</button>
+        <button type="submit" whileHover={{ scale: 1.1 }}>
+          Send
+        </button>
       </form>
     </div>
   );
