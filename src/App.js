@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Chatbot from "./Chatbot.js";
-import Home from "./Home.js";
+import Chatbot from "./Components/Chatbot.js";
+import Home from "./Components/Home.js";
 import "./style.css";
 
 function App() {
@@ -16,6 +16,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
