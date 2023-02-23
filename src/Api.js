@@ -1,7 +1,7 @@
-const API_URL = "http://localhost:3001/chatbot?name=";
+const API_URL = "http://localhost:3001";
 
-const chatbot = async (input) => {
-  const response = await fetch(`${API_URL}/chatbot`, {
+const chatbot = async (input, name) => {
+  const response = await fetch(`${API_URL}/chatbot?name=${name}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,6 +13,5 @@ const chatbot = async (input) => {
   const json = await response.json();
   return json.response;
 };
-
 
 export { chatbot };
